@@ -3,15 +3,17 @@ import React, { createContext, useState, useEffect } from 'react';
 export const Database = createContext();
 
 const DatabaseProvider = (props) => {
-    const [characters, setCharacters] = useState([]);
+    const [characters, setCharacters] = useState();
 
     useEffect(() => {
-        (async () => {
+        const getData = async () => {
             const res = await fetch('https://api.jsonbin.io/b/5ed797da7741ef56a567395c');
             const resData = await res.json();
             setCharacters(resData);
-        })()
+        }
+        getData();
     }, []);
+
 
     return (
         <Database.Provider value ={{characters}}>  
@@ -58,3 +60,9 @@ export default DatabaseProvider;
 //     }
 //     fetchData()
 // }, [])
+
+// (async () => {
+//     const res = await fetch('https://api.jsonbin.io/b/5ed797da7741ef56a567395c');
+//     const resData = await res.json();
+//     setCharacters(resData);
+// })()
