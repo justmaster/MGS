@@ -26,6 +26,7 @@ function App() {
       <BrowserRouter>
         <DatabaseProvider>
               <Switch>
+                <Route path="/" component={Home} exact />
                 <Route path="/home/:langId" component={Home} exact />
                 <Route path="/about/:langId" component={About} />
                 <Route path="/characters/:langId" component={Characters} exact/>
